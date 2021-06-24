@@ -32,9 +32,9 @@ exports.fetchSoliders = async (req, res, next) => {
     const queryB = `SELECT * FROM jobs`;
 
     try {
-        const [ soldiers ] = await db.query(queryA);
-        const [ jobs ] = await db.query(queryB);
-        return res.status(200).json({ soldiers, jobs});
+        const [soldiers] = await db.query(queryA);
+        const [jobs] = await db.query(queryB);
+        return res.status(200).json({ soldiers, jobs });
     } catch (error) {
         next(error);
     }
@@ -48,7 +48,7 @@ exports.fetchSolidersPerJob = async (req, res, next) => {
                    WHERE divisions.job_id = ?`;
 
     try {
-        const [ soldiers ] = await db.query(query, jobId);
+        const [soldiers] = await db.query(query, jobId);
         return res.status(200).json(soldiers);
     } catch (error) {
         next(error);
